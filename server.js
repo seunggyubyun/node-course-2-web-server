@@ -2,6 +2,9 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+//process.env is an object that stores all of our environment variables
+//as key value pairs. We are looking for one that heroku is going to set called PORT
+const port = process.env.PORT || 3000;
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials')
@@ -63,6 +66,6 @@ app.get('/bad', (req, res) => {
   });
 })
 
-app.listen(3000, ()=> {
-  console.log('Server is up on 3000');
+app.listen(port, ()=> {
+  console.log(`Server is up on ${port}`);
 });
