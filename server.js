@@ -28,10 +28,10 @@ app.use((req, res, next) => {
 })
 
 //next is not called so the handlers at the bottom dont get called
-app.use((req, res, next) => {
-  res.render('maintenance.hbs', {
-  })
-})
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs', {
+//   })
+// })
 
 //build in middleware function
 //teach middleware to read from a static directory
@@ -56,7 +56,7 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
-    pageTitle: 'About Page',
+    pageTitle: 'About Page'
   })
 });
 
@@ -65,6 +65,12 @@ app.get('/bad', (req, res) => {
     errorMessage : 'Unable to handle request'
   });
 })
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'projects'
+  })
+});
 
 app.listen(port, ()=> {
   console.log(`Server is up on ${port}`);
